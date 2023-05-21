@@ -42,7 +42,7 @@ Autocmd group ID used internally by `lswip`
 
 #### autocmd `LswipUpdate`
 
-**User** autocmd to get notified on spinner updates
+_User_ autocmd to get notified on spinner updates
 
 The following `data` table is passed to the callback function arguments
 
