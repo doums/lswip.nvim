@@ -4,8 +4,8 @@
 
 local M = {}
 
-local spinner_mod = require('lspin.spinner').spinner
-local group_id = vim.api.nvim_create_augroup('lspin', {})
+local spinner_mod = require('lswip.spinner').spinner
+local group_id = vim.api.nvim_create_augroup('lswip', {})
 local spinner
 
 function M.init(config)
@@ -34,7 +34,7 @@ function M.init(config)
 
   if config.redrawstatus then
     vim.api.nvim_create_autocmd('User', {
-      pattern = 'LspinUpdate',
+      pattern = 'LswipUpdate',
       group = group_id,
       desc = 'Lsp spinner update',
       callback = function()

@@ -10,7 +10,7 @@ local _config = {
   interval = 80,
   -- Spinner frames
   frames = { '▪', '■', '□', '▫' },
-  -- Redraw statusline on each spinner frame update
+  -- Redraw statuslines on spinner updates (new frame)
   -- see :h redrawstatus
   -- set to '!' for :redrawstatus! equivalent
   redrawstatus = false,

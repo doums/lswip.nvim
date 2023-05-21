@@ -23,7 +23,7 @@ function M.spinner:start(cb)
     self.interval,
     vim.schedule_wrap(function()
       vim.api.nvim_exec_autocmds('User', {
-        pattern = 'LspinUpdate',
+        pattern = 'LswipUpdate',
         group = self.autocmd_group,
         data = {
           spin = true,
@@ -42,7 +42,7 @@ function M.spinner:stop()
   self.timer:stop()
   self.frame = 1
   vim.api.nvim_exec_autocmds('User', {
-    pattern = 'LspinUpdate',
+    pattern = 'LswipUpdate',
     group = self.autocmd_group,
     data = {
       spin = false,
@@ -56,7 +56,7 @@ function M.spinner:close(notify)
     return
   end
   vim.api.nvim_exec_autocmds('User', {
-    pattern = 'LspinUpdate',
+    pattern = 'LswipUpdate',
     group = self.autocmd_group,
     data = {
       spin = false,

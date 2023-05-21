@@ -3,17 +3,17 @@
 -- file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 -- local init_cfg = require('lsp_wip.config').init
-local lspin = require('lspin.lspin')
-local cfg = require('lspin.config')
+local lswip = require('lswip.lswip')
+local cfg = require('lswip.config')
 
 local M = {}
 
 function M.setup(config)
   config = cfg.init(config or {})
-  lspin.init(config)
+  lswip.init(config)
 end
 
-M.group = lspin.group
-M.get = lspin.get
+M.group = lswip.group
+M.get = lswip.get
 
 return M
