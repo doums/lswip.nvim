@@ -15,7 +15,7 @@ function M.init(config)
     group = group_id,
     desc = 'LSP progress notification',
     callback = function()
-      local clients = vim.iter(vim.lsp.get_active_clients())
+      local clients = vim.iter(vim.lsp.get_clients())
       local is_wip = clients:any(function(client)
         local msg = client.progress:pop()
         client.progress:clear()
