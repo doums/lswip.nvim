@@ -6,7 +6,7 @@ local M = { spinner = {} }
 
 function M.spinner:new(interval, frames, autocmd_group)
   local instance = {
-    timer = vim.loop.new_timer(),
+    timer = vim.uv.new_timer(),
     interval = interval,
     frames = frames,
     frame = 1,

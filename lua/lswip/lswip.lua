@@ -11,17 +11,20 @@ local spinner
 function M.init(config)
   spinner = spinner_mod:new(config.interval, config.frames, group_id)
 
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'LspProgressUpdate',
+  vim.api.nvim_create_autocmd('LspProgress', {
     group = group_id,
     desc = 'LSP progress notification',
     callback = function()
-      local clients = vim.lsp.get_active_clients()
-      local is_wip = vim.tbl_contains(clients, function(client)
-        return vim.tbl_contains(client.messages.progress, function(msg)
-          return not msg.done
-        end, { predicate = true })
-      end, { predicate = true })
+      local clients = vim.iter(vim.lsp.get_active_clients())
+      local is_wip = clients:any(function(client)
+        local msg = client.progress:pop()
+        client.progress:clear()
+        if not msg then
+          return false
+        end
+        local kind = vim.tbl_get(msg, 'value', 'kind')
+        return kind == 'report' or kind == 'begin'
+      end)
 
       if is_wip and not spinner:is_spinning() then
         spinner:start()
