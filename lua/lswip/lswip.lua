@@ -17,7 +17,7 @@ function M.init(config)
     callback = function()
       local clients = vim.iter(vim.lsp.get_clients())
       local is_wip = clients:any(function(client)
-        local msg = client.progress:pop()
+        local msg = vim.iter(client.progress):last()
         client.progress:clear()
         if not msg then
           return false
